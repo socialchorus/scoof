@@ -8,4 +8,4 @@
 //= require scoof/namespace
 //= require scoof/events
 //= require scoof/view
-//= require scoof/default_presenter
+//= require scoof/presenter

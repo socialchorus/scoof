@@ -1,6 +1,6 @@
 Scoof.View = Backbone.View.extend({
   addListeners: {},
-  presenterClass: function () { return Scoof.DefaultPresenter; },
+  presenterClass: function () { return Scoof.Presenter; },
 
   render: function() {
     this.renderTemplate();
