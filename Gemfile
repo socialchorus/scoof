@@ -12,3 +12,7 @@ gemspec
 
 # To use debugger
 # gem 'debugger'
+
+gem 'jasmine-core', github: 'pivotal/jasmine'
+gem 'jasmine', github: 'pivotal/jasmine-gem'
+

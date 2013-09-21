@@ -1,3 +1,11 @@
-= Scoof
+= Scoof: SocialChorus/SocialChorus OO FrontEnd
 
-This project rocks and uses MIT-LICENSE.
+Scoof is a front-end framework used by the SocialCoder's a SocialChorus.
+
+SocialCoders use a modified version of OOCSS, and have an set of Backbone
+conventions.
+
+== Development
+The current jasmine gem does not play well with engines.
+To modify and test javascript, go into the spec/dummy directory and then
+run `rake jasmine` or `rake jasmine:ci`.
