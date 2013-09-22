@@ -1,6 +1,6 @@
 Scoof.Events = {
   isTouch: function() {
-    // taken from modernize
+    // taken from Modernizr: http://modernizr.com/license
     return (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch);
   },
 
