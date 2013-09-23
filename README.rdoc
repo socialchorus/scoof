@@ -5,6 +5,19 @@ Scoof is a front-end framework used by the SocialCoder's a SocialChorus.
 SocialCoders use a modified version of OOCSS, and have an set of Backbone
 conventions.
 
+== TODO
+* Hogan compilation for performance
+* template in page render to prevent large resources
+* widgets
+  * Dropdown menu
+  * back button
+  * modal
+  * form
+  * model view
+  * collection view
+* generators
+* models
+
 == Development
 The current jasmine gem does not play well with engines.
 To modify and test javascript, go into the spec/dummy directory and then
