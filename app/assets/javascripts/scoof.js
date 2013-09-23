@@ -9,3 +9,4 @@
 //= require scoof/events
 //= require scoof/view
 //= require scoof/presenter
+//= require scoof/router
