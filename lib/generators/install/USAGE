@@ -1,0 +1,14 @@
+Description:
+    Install Scoof assets via manifests and some starter files
+
+Example:
+    rails generate scoof:install
+
+    This will create:
+        app/assets/javascripts/scoof.js
+        app/assets/javascripts/scoof/init.js
+        app/assets/stylesheets/mobile.scss
+        app/assets/stylesheets/tablet.scss
+        app/assets/stylesheets/desktop.scss
+        app/templates/layout/_head.html.mustache
+        app/templates/layout/_body.html.mustache
