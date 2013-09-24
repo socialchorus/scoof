@@ -12,11 +12,16 @@ conventions.
   * Dropdown menu
   * back button
   * modal
-  * form
+  * form view
   * model view
   * collection view
 * generators
-* models
+  - view
+  - template
+  - presenter
+  - specs for presenter and view
+* js models
+* simplified CSS
 
 == Development
 The current jasmine gem does not play well with engines.

@@ -39,6 +39,7 @@ Scoof.Router = Backbone.Router.extend({
   },
 
   redirect: function (path) {
+    // send a redirect message to the Events publisher
     window.location = path;
-  },
+  }
 });

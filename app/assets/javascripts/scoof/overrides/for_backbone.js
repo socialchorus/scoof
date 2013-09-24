@@ -5,7 +5,7 @@ Backbone.ajax = function() {
   });
 
   // reads events from data, and does a global publish
-  var args = _.map(args, function(a) {
+  args = _.map(args, function(a) {
     return new Scoof.GlobalPublisherAdder(a).perform();
   });
 

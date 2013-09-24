@@ -11,7 +11,7 @@ Scoof.AuthTokenAdder = function (args) {
 };
 
 Scoof.AuthTokenAdder.prototype.perform = function () {
-  this.handlePostPutPatch()
+  this.handlePostPutPatch();
   this.handleDelete();
   return this.args;
 };
