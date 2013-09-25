@@ -43,6 +43,7 @@ Scoof.View = Backbone.View.extend({
 
   renderTemplate: function(){
     var template = HoganTemplates[this.templateName];
+    if (!template) {return;}
     var rendered = template.render(this.presenter(), this.partials());
     this.$el.html(rendered);
   },

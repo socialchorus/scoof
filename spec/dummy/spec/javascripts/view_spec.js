@@ -30,6 +30,22 @@ describe("Scoof.View", function() {
         view.render();
       });
 
+      describe('there is no template specified', function() {
+        beforeEach(function() {
+          HoganTemplates['view_class'] = undefined;
+        });
+
+        it('doesnt explode', function() {
+          var thrown = true;
+          try {
+            view.render();
+            thrown = false;
+          } catch (e) {}
+
+          expect(thrown).toBeFalsy();
+        })
+      });
+
       it('renders via Backbone with the right class', function() {
         expect($(view.el).attr('class')).toBe('view-class');
       });
