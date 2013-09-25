@@ -1,5 +1,18 @@
 describe("Scoof.View", function() {
-  var view;
+  var view, ViewClass;
+
+  beforeEach(function() {
+    ViewClass = Scoof.View.extend({
+      className: 'view-class',
+      templateName: 'view_class'
+    });
+
+    HoganTemplates['view_class'] = {
+      render: function() {
+        return "<div class='view-class-inner'>{{foo}}</div>";
+      }
+    };
+  });
 
   it('is a Backbone.View', function() {
     var ViewClass = Scoof.View.extend();
@@ -9,17 +22,6 @@ describe("Scoof.View", function() {
 
   describe("rendering", function() {
     beforeEach(function() {
-      var ViewClass = Scoof.View.extend({
-        className: 'view-class',
-        templateName: 'view_class'
-      });
-
-      HoganTemplates['view_class'] = {
-        render: function() {
-          return "<div class='view-class-inner'>{{foo}}</div>";
-        }
-      };
-
       view = new ViewClass();
     });
 
@@ -63,6 +65,25 @@ describe("Scoof.View", function() {
         view.render();
         var mostRecentCall = HoganTemplates['view_class'].render.calls.mostRecent();
         expect(mostRecentCall.args[1]).toEqual(partials);
+      });
+    });
+
+    describe("attaching to parent", function() {
+      var $parent;
+
+      beforeEach(function() {
+        $parent = $('<div class="goo"></div>')
+        spyOn(Scoof.View.ParentFinder.prototype, 'perform').and.returnValue($parent);
+      });
+
+      it('performs the parent finder', function() {
+        view.render();
+        expect(Scoof.View.ParentFinder.prototype.perform).toHaveBeenCalled()
+      });
+
+      it('attaches (using the method) current DOM to the parent', function() {
+        view.render();
+        expect($parent.find('.view-class').length).toBe(1);
       });
     });
   });

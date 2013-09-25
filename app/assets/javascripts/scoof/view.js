@@ -2,9 +2,28 @@ Scoof.View = Backbone.View.extend({
   addListeners: {},
   presenterClass: function () { return Scoof.Presenter; },
 
+  initialize: function (opts) {
+    opts = opts || {};
+    this.parent = opts.parent;
+    this.attachmentMethod = opts.attachMethod || 'append';
+    this.init();
+  },
+
+  init: function () {
+    // override in classes
+  },
+
   render: function() {
     this.renderTemplate();
+    this.attachToParent();
     this.afterRender();
+  },
+
+  attachToParent: function () {
+    var $parent = new Scoof.View.ParentFinder(
+      this.parent, this.parentSelector, this.attachmentMethod
+    ).perform();
+    $parent && $parent[this.attachmentMethod](this.el);
   },
 
   afterRender: function() { /* template method hook ! */ },

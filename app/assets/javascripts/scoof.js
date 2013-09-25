@@ -11,5 +11,6 @@
 //= require scoof/events/redirector
 //= require scoof/events/flasher
 //= require scoof/view
+//= require scoof/view/parent_finder
 //= require scoof/presenter
 //= require scoof/router
