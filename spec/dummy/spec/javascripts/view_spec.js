@@ -88,7 +88,8 @@ describe("Scoof.View", function() {
       var $parent;
 
       beforeEach(function() {
-        $parent = $('<div class="goo"></div>')
+        view.attachmentMethod = 'html';
+        $parent = $('<div class="goo"><div class="huh"></div></div>')
         spyOn(Scoof.View.ParentFinder.prototype, 'perform').and.returnValue($parent);
       });
 
@@ -99,7 +100,41 @@ describe("Scoof.View", function() {
 
       it('attaches (using the method) current DOM to the parent', function() {
         view.render();
+        expect($parent.find('.huh').length).toBe(0);
         expect($parent.find('.view-class').length).toBe(1);
+      });
+    });
+
+    describe("rendering subviews", function() {
+      beforeEach(function() {
+        var SubView = Scoof.View.extend({
+          render: jasmine.createSpy('render')
+        });
+
+        view.subviews = function () {
+          if (this._subviews) { return this._subviews; }
+
+          this._subviews = [
+            new SubView({model: {n: 1}}),
+            new SubView({model: {n: 2}}),
+          ];
+
+          return this._subviews;
+        };
+      });
+
+      it("should set itself on subviews as the parent", function() {
+        view.render();
+        _.each(view.subviews(), function(sub) {
+          expect(sub.parent).toBe(view);
+        });
+      });
+
+      it("should call render on each of the subviews", function() {
+        view.render();
+        _.each(view.subviews(), function(sub) {
+          expect(sub.render).toHaveBeenCalled();
+        });
       });
     });
   });

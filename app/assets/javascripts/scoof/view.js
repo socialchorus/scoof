@@ -15,8 +15,20 @@ Scoof.View = Backbone.View.extend({
 
   render: function() {
     this.renderTemplate();
+    this.renderSubviews();
     this.attachToParent();
     this.afterRender();
+  },
+
+  subviews: function() {
+    return [];
+  },
+
+  renderSubviews: function () {
+    _.each(this.subviews(), function (view) {
+      view.parent = this;
+      view.render();
+    }.bind(this));
   },
 
   attachToParent: function () {
