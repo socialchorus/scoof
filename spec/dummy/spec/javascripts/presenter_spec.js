@@ -53,6 +53,18 @@ describe("Scoof.Presenter", function() {
           return 'SocialCoder OO FrontEnd';
         }
       });
+      spyOn(Scoof.Presenter.prototype, 'init');
+      spyOn(Scoof.Presenter.prototype, 'initialize');
+    });
+
+    it('calls initialize on initialize', function() {
+      new Scoof.Presenter();
+      expect(Scoof.Presenter.prototype.init).toHaveBeenCalled();
+    });
+
+    it('calls init on initialize', function() {
+      new Scoof.Presenter();
+      expect(Scoof.Presenter.prototype.initialize).toHaveBeenCalled();
     });
 
     it("gets it from Backbone", function() {

@@ -1,5 +1,15 @@
 Scoof.Presenter = function(presented) {
   this.presented = presented || {};
+  this.initialize();
+  this.init();
+};
+
+Scoof.Presenter.prototype.initialize = function () {
+  //Put your stuff here
+};
+
+Scoof.Presenter.prototype.init = function () {
+  //Put your stuff here
 };
 
 Scoof.Presenter.extend = Backbone.Model.extend;
