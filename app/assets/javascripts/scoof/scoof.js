@@ -21,3 +21,5 @@ var Scoof = {
     });
   }
 };
+
+Scoof.Widget = {};

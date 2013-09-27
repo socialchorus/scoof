@@ -11,3 +11,4 @@
 // about supported directives.
 //
 //= require scoof
+//= require scoof_widgets
