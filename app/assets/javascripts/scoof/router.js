@@ -1,6 +1,6 @@
 Scoof.Router = Backbone.Router.extend({
-  initialize: function (pageView) {
-    this.pageView = pageView;
+  initialize: function ($layout) {
+    this.$layout = $layout;
   },
 
   // We are overriding this method to add some events before and after
@@ -28,14 +28,14 @@ Scoof.Router = Backbone.Router.extend({
   },
 
   page: function () {
-    this.pageView.$el.empty();
+    this.$layout.empty();
     this.render.apply(this, arguments);
   },
 
   render: function () {
     _.each(arguments, function (view) {
-      view.render(this.pageView);
-    });
+      view.render();
+    }.bind(this));
   },
 
   redirect: function (path) {

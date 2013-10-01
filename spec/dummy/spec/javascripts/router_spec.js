@@ -1,28 +1,32 @@
 describe("Scoof.Router", function() {
+  var $parent;
+
   it("is a Backbone.Router", function() {
     expect(new Scoof.Router() instanceof Backbone.Router).toBe(true);
+  });
+
+  beforeEach(function() {
+    $parent = $('<div id="content"><span></span></div>');
   });
 
   describe("page", function() {
     var router;
 
     beforeEach(function() {
-      pageView = new Scoof.View({el: $('<div id="content"><span></span></div>')});
-      router = new Scoof.Router(pageView);
+      router = new Scoof.Router($parent);
     });
 
     it("clears the #content div of existing content", function() {
       router.page();
-      expect(pageView.$('span').length).toBe(0);
+      expect($parent.find('span').length).toBe(0);
     });
 
     it("renders view passed in", function() {
-      var ViewClass = Scoof.View.extend();
-      var view = new ViewClass();
-      spyOn(view, 'render');
+      var view = new Scoof.View({parent: $parent});
+      view.el = $("<div class='new-view'></div>")[0];
 
       router.page(view);
-      expect(view.render).toHaveBeenCalled();
+      expect($parent.find('.new-view').length).toBe(1);
     });
   });
 
@@ -30,17 +34,15 @@ describe("Scoof.Router", function() {
     var router;
 
     beforeEach(function() {
-      pageView = new Scoof.View({el: $('<div id="content"><span></span></div>')});
-      router = new Scoof.Router(pageView);
+      router = new Scoof.Router($parent);
     });
 
     it("renders view passed in", function() {
-      var ViewClass = Scoof.View.extend();
-      var view = new ViewClass();
-      spyOn(view, 'render');
+      var view = new Scoof.View({parent: $parent});
+      view.el = $("<div class='new-view'></div>")[0];
 
-      router.render(view);
-      expect(view.render).toHaveBeenCalled();
+      router.page(view);
+      expect($parent.find('.new-view').length).toBe(1);
     });
   });
 
