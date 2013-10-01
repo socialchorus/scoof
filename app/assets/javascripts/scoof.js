@@ -12,6 +12,7 @@
 //= require scoof/events/flasher
 //= require scoof/view
 //= require scoof/view/parent_finder
+//= require_tree ./scoof/widget
 //= require scoof/presenter
 //= require_tree ./scoof/presenters
 //= require scoof/router
