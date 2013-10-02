@@ -25,7 +25,7 @@ describe("Scoof.Router", function() {
       var view = new Scoof.View({parent: $parent});
       view.el = $("<div class='new-view'></div>")[0];
 
-      router.page(view);
+      router.page([view]);
       expect($parent.find('.new-view').length).toBe(1);
     });
   });
@@ -41,7 +41,7 @@ describe("Scoof.Router", function() {
       var view = new Scoof.View({parent: $parent});
       view.el = $("<div class='new-view'></div>")[0];
 
-      router.page(view);
+      router.page([view]);
       expect($parent.find('.new-view').length).toBe(1);
     });
   });
