@@ -27,9 +27,9 @@ Scoof.Router = Backbone.Router.extend({
     return this;
   },
 
-  page: function () {
+  page: function (views) {
     this.$layout.empty();
-    this.render.apply(this, arguments);
+    this.render.apply(this, views);
   },
 
   render: function () {

@@ -6,10 +6,10 @@ Scoof.View = Backbone.View.extend({
     opts = opts || {};
     this.parent = opts.parent;
     this.attachmentMethod = this.attachmentMethod || 'append';
-    this.init();
+    this.init(opts);
   },
 
-  init: function () {
+  init: function (opts) {
     // override in classes
   },
 
