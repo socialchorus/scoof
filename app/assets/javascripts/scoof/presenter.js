@@ -31,8 +31,8 @@ Scoof.Presenter.prototype.inclusions = function () {
 };
 
 Scoof.Presenter.prototype.inclusionFor = function (attr) {
-  var prop = this[attr]
-  return _.isFunction(prop) ? prop() : prop;
+  var prop = this[attr];
+  return _.isFunction(prop) ? prop.bind(this)() : prop;
 };
 
 Scoof.Presenter.prototype.toJSON = function() {
