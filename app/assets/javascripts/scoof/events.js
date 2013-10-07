@@ -4,6 +4,12 @@ Scoof.Events = {
     return (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch);
   },
 
+  isWindowsTouch: function() {
+    if (/Windows.NT.6/i.test(navigator.userAgent)){
+      return true;
+    }
+    return false;
+  },
   startEvent: 'touchstart',
 
   publisher: _.extend({}, Backbone.Events),

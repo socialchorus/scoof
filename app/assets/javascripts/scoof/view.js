@@ -1,6 +1,8 @@
 Scoof.View = Backbone.View.extend({
   addListeners: {},
-  presenterClass: function () { return Scoof.Presenter; },
+  presenterClass: function () {
+    return Scoof.Presenter;
+  },
 
   initialize: function (opts) {
     opts = opts || {};
@@ -13,14 +15,14 @@ Scoof.View = Backbone.View.extend({
     // override in classes
   },
 
-  render: function() {
+  render: function () {
     this.renderTemplate();
     this.renderSubviews();
     this.attachToParent();
     this.afterRender();
   },
 
-  subviews: function() {
+  subviews: function () {
     return [];
   },
 
@@ -38,35 +40,39 @@ Scoof.View = Backbone.View.extend({
     $parent && $parent[this.attachmentMethod](this.el);
   },
 
-  afterRender: function() { /* template method hook ! */ },
-
-  events: function() {
-    if (!Scoof.Events.isTouch()) return this.addListeners;
-
-    var eventSet = {};
-
-    _.each(_.keys(this.addListeners), function(eventKey) {
-      var key = eventKey.replace('click', Scoof.Events.startEvent);
-      eventSet[key] = this.addListeners[eventKey];
-    }.bind(this));
-
-    return eventSet;
+  afterRender: function () { /* template method hook ! */
   },
 
-  renderTemplate: function(){
+  events: function () {
+    if (Scoof.Events.isTouch() && !Scoof.Events.isWindowsTouch()) {
+      var eventSet = {};
+
+      _.each(_.keys(this.addListeners), function (eventKey) {
+        var key = eventKey.replace('click', Scoof.Events.startEvent);
+        eventSet[key] = this.addListeners[eventKey];
+      }.bind(this));
+
+      return eventSet;
+    }
+    return this.addListeners;
+  },
+
+  renderTemplate: function () {
     var template = HoganTemplates[this.templateName];
-    if (!template) {return;}
+    if (!template) {
+      return;
+    }
     var rendered = template.render(this.presenter(), this.partials());
     this.$el.html(rendered);
   },
 
-  presenter: function() {
+  presenter: function () {
     var presented = this.model || this.collection || {};
     var presenter = new (this.presenterClass())(presented);
     return presenter.toJSON();
   },
 
-  partials: function() {
+  partials: function () {
     // override with own partials if necessary
     return {};
   }
