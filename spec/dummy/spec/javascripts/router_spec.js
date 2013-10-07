@@ -44,6 +44,12 @@ describe("Scoof.Router", function() {
       router.page([view]);
       expect($parent.find('.new-view').length).toBe(1);
     });
+
+    it('calls afterRender after rendering everything', function() {
+      spyOn(Scoof.Router.prototype, 'afterRender');
+      router.render();
+      expect(router.afterRender).toHaveBeenCalled();
+    });
   });
 
   describe("going to a route", function() {

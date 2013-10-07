@@ -36,6 +36,11 @@ Scoof.Router = Backbone.Router.extend({
     _.each(args, function (view) {
       view.render();
     }.bind(this));
+    this.afterRender();
+  },
+
+  afterRender: function(){
+    //put your after render stuff here
   },
 
   redirect: function (path) {
