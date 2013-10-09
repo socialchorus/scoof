@@ -1,5 +1,6 @@
 //= require vendor/underscore
 //= require vendor/backbone
+//= require hogan
 //
 //= require scoof/scoof
 //= require scoof/overrides/function_bind
