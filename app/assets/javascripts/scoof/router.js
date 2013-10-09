@@ -1,7 +1,11 @@
 Scoof.Router = Backbone.Router.extend({
   initialize: function ($layout) {
     this.$layout = $layout;
+
+    this.init();
   },
+
+  init: function () {},
 
   // We are overriding this method to add some events before and after
   // a route happens. Unfortunately, the anonymous function in the middle
