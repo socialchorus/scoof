@@ -14,7 +14,9 @@ _.extend(Scoof.GlobalPublisherAdder.prototype, {
       callback && callback(xhr, status);
 
       // extract the JSON data
-      var data = JSON.parse(xhr.response);
+      
+      response = xhr.response || "{}"
+      var data = JSON.parse(response);
       var publisher = Scoof.Events;
 
       // publish each event received
